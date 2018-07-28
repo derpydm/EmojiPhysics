@@ -16,12 +16,21 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
     var emojis = ["😂","🐒","🐧","😥","👩🏻‍⚖️","👨🏿‍🍳","👩🏼‍🎓","👦🏻","😱","😅","💩"]
     var animator: UIDynamicAnimator!
     var collisions: UICollisionBehavior!
+    var dynamics: UIDynamicItemBehavior!
     override func viewDidLoad() {
         super.viewDidLoad()
         animator = UIDynamicAnimator(referenceView: mainView)
         collisions = UICollisionBehavior(items: [])
         collisions.translatesReferenceBoundsIntoBoundary = true
         animator.addBehavior(collisions)
+        
+        dynamics = UIDynamicItemBehavior(items: [])
+        
+        dynamics.elasticity = 1.0
+        
+        dynamics.resistance = 0
+        
+        animator.addBehavior(dynamics)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -55,11 +64,16 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         collisions.addItem(label)
         
+        dynamics.addItem(label)
         // push randomly
         let push = UIPushBehavior(items: [label], mode: .instantaneous)
         push.angle = CGFloat(drand48() * .pi * 2) // radians
-        push.magnitude = CGFloat(1 + drand48() + drand48()) //between 1 and 3
+        push.magnitude = CGFloat(1 + drand48() + drand48()) // between 1 and 3
         animator.addBehavior(push)
+        
+        // animations.
+        
+        
         
     }
 
