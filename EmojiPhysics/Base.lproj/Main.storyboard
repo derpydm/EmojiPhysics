@@ -26,32 +26,31 @@
                                     <action selector="startButtonPressed:" destination="TFQ-KY-0bD" eventType="touchUpInside" id="05t-6h-cwM"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emoji Physics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLO-N2-BTw">
-                                <rect key="frame" x="135" y="158" width="105" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Emoji Physics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLO-N2-BTw">
+                                <rect key="frame" x="46" y="122" width="283" height="121"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qRB-sT-ROR" firstAttribute="bottom" secondItem="YLO-N2-BTw" secondAttribute="bottom" constant="488" id="5c5-Ce-6w2"/>
                             <constraint firstItem="8g1-KZ-Dmv" firstAttribute="centerY" secondItem="qRB-sT-ROR" secondAttribute="centerY" id="CwA-lo-S0M"/>
                             <constraint firstItem="YLO-N2-BTw" firstAttribute="centerX" secondItem="qRB-sT-ROR" secondAttribute="centerX" id="P3H-dp-r6s"/>
+                            <constraint firstItem="YLO-N2-BTw" firstAttribute="top" secondItem="qRB-sT-ROR" secondAttribute="top" constant="102" id="aI6-6Y-Gcn"/>
+                            <constraint firstItem="qRB-sT-ROR" firstAttribute="bottom" secondItem="YLO-N2-BTw" secondAttribute="bottom" constant="424" id="etd-Zc-Zeb"/>
                             <constraint firstItem="8g1-KZ-Dmv" firstAttribute="centerX" secondItem="qRB-sT-ROR" secondAttribute="centerX" id="oeV-qo-YgU"/>
-                            <constraint firstItem="YLO-N2-BTw" firstAttribute="top" secondItem="qRB-sT-ROR" secondAttribute="top" constant="138" id="q1b-U2-vJt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qRB-sT-ROR"/>
                     </view>
                     <connections>
-                        <outlet property="startButtonPressed" destination="8g1-KZ-Dmv" id="Ny8-D9-zkX"/>
                         <outlet property="startLabel" destination="YLO-N2-BTw" id="x8b-sL-ll3"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="emojiSegue" id="WLa-Xu-EUE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWC-Ea-2pS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1036" y="118"/>
+            <point key="canvasLocation" x="-1036" y="117.39130434782609"/>
         </scene>
         <!--Emoji View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -62,28 +61,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOI-St-kzs">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <color key="backgroundColor" red="0.87450980392156863" green="0.94509803921568625" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FIK-bc-V4h">
-                                <rect key="frame" x="0.0" y="20" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="9ch-1i-MW5"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HOk-nG-khf">
-                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="itemSize" width="80" height="80"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emojiCell" id="t8R-Bd-MfM" customClass="EmojiCollectionViewCell" customModule="EmojiPhysics" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😀" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IP-g7-26G">
-                                                    <rect key="frame" x="13" y="13" width="74" height="74"/>
+                                                    <rect key="frame" x="13" y="13" width="54" height="54"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -111,12 +113,11 @@
                         <constraints>
                             <constraint firstItem="FIK-bc-V4h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3KU-A0-eHs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rOI-St-kzs" secondAttribute="bottom" id="44i-vQ-8pF"/>
+                            <constraint firstItem="rOI-St-kzs" firstAttribute="top" secondItem="FIK-bc-V4h" secondAttribute="bottom" id="6Oj-rW-THl"/>
                             <constraint firstItem="FIK-bc-V4h" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="E3e-i7-niH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rOI-St-kzs" secondAttribute="trailing" id="dP6-0O-9yU"/>
                             <constraint firstItem="rOI-St-kzs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eFH-DK-RLf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FIK-bc-V4h" secondAttribute="bottom" constant="547" id="gQM-Gi-D7E"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FIK-bc-V4h" secondAttribute="trailing" id="scj-CO-mBV"/>
-                            <constraint firstItem="rOI-St-kzs" firstAttribute="top" secondItem="FIK-bc-V4h" secondAttribute="bottom" id="tNH-MQ-XXe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

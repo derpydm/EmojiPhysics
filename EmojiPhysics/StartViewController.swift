@@ -16,6 +16,14 @@ class StartViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.startLabel.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+        let animator = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
+            self.startLabel.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            self.startLabel.transform = CGAffineTransform.identity
+        }
+        animator.startAnimation()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
