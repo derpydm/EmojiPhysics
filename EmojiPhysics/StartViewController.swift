@@ -9,12 +9,17 @@
 import UIKit
 
 class StartViewController: UIViewController {
-
+    
+    
     @IBOutlet weak var startLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func unwindToStart(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.startLabel.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)

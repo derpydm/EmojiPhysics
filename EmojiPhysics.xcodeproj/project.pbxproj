@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE62CDEF21153F250035BA31 /* ThemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62CDEE21153F250035BA31 /* ThemeCollectionViewController.swift */; };
+		CE62CDF121153F3E0035BA31 /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62CDF021153F3E0035BA31 /* ThemeCollectionViewCell.swift */; };
+		CE62CDF321153FA20035BA31 /* globalvars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62CDF221153FA20035BA31 /* globalvars.swift */; };
 		CE670399210C533500741814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE670398210C533500741814 /* Assets.xcassets */; };
 		CE67039B210C534900741814 /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE67039A210C534900741814 /* death.mp3 */; };
 		CEA8C19C210C046B006BE53C /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8C19B210C046B006BE53C /* EmojiCollectionViewCell.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE62CDEE21153F250035BA31 /* ThemeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewController.swift; sourceTree = "<group>"; };
+		CE62CDF021153F3E0035BA31 /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE62CDF221153FA20035BA31 /* globalvars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globalvars.swift; sourceTree = "<group>"; };
 		CE670398210C533500741814 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE67039A210C534900741814 /* death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = death.mp3; path = ../../../../../Downloads/death.mp3; sourceTree = "<group>"; };
 		CEA8C19B210C046B006BE53C /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -108,6 +114,9 @@
 				CEA8C19B210C046B006BE53C /* EmojiCollectionViewCell.swift */,
 				CED2DB9F210BFD4E00B7336E /* EmojiViewController.swift */,
 				CED2DBA1210BFD4E00B7336E /* Main.storyboard */,
+				CE62CDF221153FA20035BA31 /* globalvars.swift */,
+				CE62CDF021153F3E0035BA31 /* ThemeCollectionViewCell.swift */,
+				CE62CDEE21153F250035BA31 /* ThemeCollectionViewController.swift */,
 				CEA8C19D210C0695006BE53C /* StartViewController.swift */,
 				CED2DBA6210BFD4E00B7336E /* LaunchScreen.storyboard */,
 				CE670398210C533500741814 /* Assets.xcassets */,
@@ -270,7 +279,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED2DBA0210BFD4E00B7336E /* EmojiViewController.swift in Sources */,
+				CE62CDEF21153F250035BA31 /* ThemeCollectionViewController.swift in Sources */,
+				CE62CDF121153F3E0035BA31 /* ThemeCollectionViewCell.swift in Sources */,
 				CEA8C19E210C0695006BE53C /* StartViewController.swift in Sources */,
+				CE62CDF321153FA20035BA31 /* globalvars.swift in Sources */,
 				CEA8C19C210C046B006BE53C /* EmojiCollectionViewCell.swift in Sources */,
 				CED2DB9E210BFD4E00B7336E /* AppDelegate.swift in Sources */,
 			);
