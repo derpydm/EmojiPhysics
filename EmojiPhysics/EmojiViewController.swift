@@ -14,7 +14,6 @@ private let reuseIdentifier = "emojiCell"
 class EmojiViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollisionBehaviorDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var gravityLabel: UILabel!
     var emojis = ["😂","🐒","🐧","😥","👩🏻‍⚖️","👨🏿‍🍳","👩🏼‍🎓","👦🏻","😱","😅","💩"]
     var animator: UIDynamicAnimator!
     var collisions: UICollisionBehavior!
@@ -32,8 +31,8 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         dynamics = UIDynamicItemBehavior(items: [])
         
-        dynamics.resistance = 0
-        dynamics.elasticity = 1.0
+        dynamics.resistance = -1
+        dynamics.elasticity = 1.05
         animator.addBehavior(dynamics)
     
         // Do any additional setup after loading the view, typically from a nib.
@@ -49,7 +48,7 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EmojiCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "emojiCell", for: indexPath) as! EmojiCollectionViewCell
         cell.emojiLabel.text = emojis[indexPath.item]
         return cell
         
@@ -71,19 +70,18 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         dynamics.addItem(label)
         // push randomly
-        let push = UIPushBehavior(items: [label], mode: .continuous)
+        let push = UIPushBehavior(items: [label], mode: .instantaneous)
         push.angle = CGFloat(drand48() * .pi * 2) // radians
         push.magnitude = CGFloat(1 + drand48() + drand48()) // between 1 and 3
         animator.addBehavior(push)
         
-        // attempted attraction (my romance life irl)\
-        let center = CGPoint(x: self.mainView.frame.midX, y: self.mainView.frame.midY)
-        let attachment = UIAttachmentBehavior(item: label, attachedToAnchor: center)
-        animator.addBehavior(attachment)
+        push.action =  { [unowned push] in
+            push.dynamicAnimator!.removeBehavior(push)
+        }
         
         // animations.
-        UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse], animations: {
-            label.transform = CGAffineTransform(scaleX: 3, y: 3)
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat, .autoreverse], animations: {
+            label.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         }, completion: nil)
         let labelAnimator = UIViewPropertyAnimator(duration: 20, curve: .easeInOut) {
             label.alpha = 0
