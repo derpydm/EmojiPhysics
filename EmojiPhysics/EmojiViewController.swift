@@ -14,11 +14,13 @@ private let reuseIdentifier = "emojiCell"
 class EmojiViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollisionBehaviorDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var gravityLabel: UILabel!
     var emojis = ["😂","🐒","🐧","😥","👩🏻‍⚖️","👨🏿‍🍳","👩🏼‍🎓","👦🏻","😱","😅","💩"]
     var animator: UIDynamicAnimator!
     var collisions: UICollisionBehavior!
     var dynamics: UIDynamicItemBehavior!
-    var player: AVAudioPlayer!
+    var player: AVQueuePlayer!
+    var isPlaying = false
     override func viewDidLoad() {
         super.viewDidLoad()
         animator = UIDynamicAnimator(referenceView: mainView)
@@ -27,13 +29,13 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         animator.addBehavior(collisions)
         collisions.collisionDelegate = self
         
+        
         dynamics = UIDynamicItemBehavior(items: [])
         
-        dynamics.elasticity = 1.0
-        
         dynamics.resistance = 0
-        
+        dynamics.elasticity = 1.0
         animator.addBehavior(dynamics)
+    
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -69,16 +71,21 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         dynamics.addItem(label)
         // push randomly
-        let push = UIPushBehavior(items: [label], mode: .instantaneous)
+        let push = UIPushBehavior(items: [label], mode: .continuous)
         push.angle = CGFloat(drand48() * .pi * 2) // radians
         push.magnitude = CGFloat(1 + drand48() + drand48()) // between 1 and 3
         animator.addBehavior(push)
+        
+        // attempted attraction (my romance life irl)\
+        let center = CGPoint(x: self.mainView.frame.midX, y: self.mainView.frame.midY)
+        let attachment = UIAttachmentBehavior(item: label, attachedToAnchor: center)
+        animator.addBehavior(attachment)
         
         // animations.
         UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse], animations: {
             label.transform = CGAffineTransform(scaleX: 3, y: 3)
         }, completion: nil)
-        let labelAnimator = UIViewPropertyAnimator(duration: 5.0, curve: .easeInOut) {
+        let labelAnimator = UIViewPropertyAnimator(duration: 20, curve: .easeInOut) {
             label.alpha = 0
         }
         labelAnimator.addCompletion { (_) in
@@ -93,9 +100,33 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         
     }
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
-        print("oof")
+        DispatchQueue.global(qos: .background).async {
+            print("oof")
+        }
     }
-    
-
+    /* Broken audio implementation
+    func playAudio() {
+        print("oof")
+        let path = Bundle.main.path(forResource: "death", ofType: "mp3")
+        if path != nil {
+            let audioURL = URL(fileURLWithPath: path!)
+            let asset = AVAsset(url: audioURL)
+            let playerItem = AVPlayerItem(asset: asset)
+            if isPlaying {
+                player.insert(playerItem, after: nil)
+                player.play()
+            } else {
+                player = AVQueuePlayer(items: [])
+                player.insert(playerItem, after: nil)
+                player.play()
+                isPlaying = true
+            }
+            if player.items().count > 5 {
+                player.removeAllItems()
+                player.insert(playerItem, after: nil)
+            }
+        }
+    }
+    */
 }
 

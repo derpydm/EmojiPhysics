@@ -62,7 +62,24 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOI-St-kzs">
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHC-Ih-pmH">
+                                        <rect key="frame" x="206" y="273" width="2" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="11E-Gu-rFm"/>
+                                            <constraint firstAttribute="width" constant="2" id="xbf-xn-SX7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.87450980392156863" green="0.94509803921568625" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="YHC-Ih-pmH" secondAttribute="bottom" constant="292" id="8QN-UC-3tx"/>
+                                    <constraint firstItem="YHC-Ih-pmH" firstAttribute="top" secondItem="rOI-St-kzs" secondAttribute="top" constant="273" id="pwl-LV-AXc"/>
+                                    <constraint firstAttribute="trailing" secondItem="YHC-Ih-pmH" secondAttribute="trailing" constant="167" id="wap-qR-ZFS"/>
+                                </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FIK-bc-V4h">
                                 <rect key="frame" x="0.0" y="20" width="375" height="80"/>
@@ -123,6 +140,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="FIK-bc-V4h" id="Dwf-zT-U4F"/>
+                        <outlet property="gravityLabel" destination="YHC-Ih-pmH" id="pMP-N3-I8A"/>
                         <outlet property="mainView" destination="rOI-St-kzs" id="zLR-82-dPB"/>
                     </connections>
                 </viewController>
