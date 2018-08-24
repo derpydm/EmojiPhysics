@@ -12,4 +12,3 @@ struct EmojiTheme {
     var title: String
     var emojis: [Character]
 }
-var emojis = [EmojiTheme(title: "Classic", emojis:["😂","🐒","👩🏼‍🎓","👦🏻","😱","😅","💩"]), EmojiTheme(title: "Modern", emojis:["😂","🐒","💩"]), EmojiTheme(title: "Another", emojis:["😂","🐒","🐧"])]

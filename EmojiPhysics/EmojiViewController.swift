@@ -19,7 +19,7 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
     var dynamics: UIDynamicItemBehavior!
     var player: AVQueuePlayer!
     var isPlaying = false
-    var currentEmojis = emojis[selectedEmoji].emojis
+    var currentEmojis: [Character]  =  [Character(" ")]
     
     override func viewDidLoad() {
         
@@ -36,7 +36,7 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         dynamics.resistance = -1
         dynamics.elasticity = 1.05
         animator.addBehavior(dynamics)
-    
+        collectionView.reloadData()
         // Do any additional setup after loading the view, typically from a nib.
     }
     

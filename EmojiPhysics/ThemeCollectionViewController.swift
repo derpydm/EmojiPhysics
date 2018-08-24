@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ThemeCollectionViewController: UICollectionViewController {
-    let currentEmojis = emojis
+    let currentEmojis = [EmojiTheme(title: "Classic", emojis:["😂","🐒","👩🏼‍🎓","👦🏻","😱","😅","💩"]), EmojiTheme(title: "Modern", emojis:["😂","🐒","💩"]), EmojiTheme(title: "Another", emojis:["😂","🐒","🐧"])]
     var currentSelectedCell: ThemeCollectionViewCell!
     var currentSelectedIndexPath: IndexPath!
     override func viewDidLoad() {
@@ -27,15 +27,18 @@ class ThemeCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if segue.identifier == "updateSegue" {
+            let dest = segue.destination as! EmojiViewController
+            dest.currentEmojis = currentEmojis[currentSelectedIndexPath.item].emojis
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -52,8 +55,8 @@ class ThemeCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThemeCollectionViewCell
-        cell.titleLabel.text = emojis[indexPath.item].title
-        let emojiText = String(emojis[indexPath.item].emojis)
+        cell.titleLabel.text = currentEmojis[indexPath.item].title
+        let emojiText = String(currentEmojis[indexPath.item].emojis)
         cell.detailLabel.text = emojiText
         cell.outlineView.layer.shadowColor = UIColor.black.cgColor
         cell.outlineView.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -76,10 +79,9 @@ class ThemeCollectionViewController: UICollectionViewController {
         let cell = collectionView.cellForItem(at: indexPath) as! ThemeCollectionViewCell
         cell.outlineView.backgroundColor = UIColor(red: 1, green: 0.82, blue: 0.988, alpha: 1)
         currentSelectedCell = collectionView.cellForItem(at: currentSelectedIndexPath) as! ThemeCollectionViewCell
-        selectedEmoji = indexPath.row
         currentSelectedCell.outlineView.backgroundColor = UIColor(red: 0.82, green: 1, blue: 0.922, alpha: 1)
         currentSelectedIndexPath = indexPath
-        
+        selectedEmoji = indexPath.row
     }
     // MARK: UICollectionViewDelegate
 
