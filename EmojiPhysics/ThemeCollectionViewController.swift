@@ -59,11 +59,10 @@ class ThemeCollectionViewController: UICollectionViewController {
         let emojiText = String(currentEmojis[indexPath.item].emojis)
         cell.detailLabel.text = emojiText
         cell.outlineView.layer.shadowColor = UIColor.black.cgColor
-        cell.outlineView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.outlineView.layer.shadowOffset = CGSize(width: 0, height: 2)
         cell.outlineView.layer.shadowOpacity = 0.5
-        cell.outlineView.layer.shadowRadius = 0.2
-        cell.outlineView.layer.cornerRadius = 10
-        
+        cell.outlineView.layer.shadowRadius = 8
+        cell.outlineView.layer.cornerRadius = 20
         if indexPath.row == currentSelectedIndexPath.item {
             currentSelectedIndexPath = indexPath
             cell.outlineView.backgroundColor = UIColor(red: 1, green: 0.82, blue: 0.988, alpha: 1)
