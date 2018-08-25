@@ -22,7 +22,6 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
     var currentEmojis: [Character]  =  [Character(" ")]
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         animator = UIDynamicAnimator(referenceView: mainView)
         collisions = UICollisionBehavior(items: [])
@@ -105,28 +104,27 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
     }
     /* Broken audio implementation
-    func playAudio() {
-        print("oof")
-        let path = Bundle.main.path(forResource: "death", ofType: "mp3")
-        if path != nil {
-            let audioURL = URL(fileURLWithPath: path!)
-            let asset = AVAsset(url: audioURL)
-            let playerItem = AVPlayerItem(asset: asset)
-            if isPlaying {
-                player.insert(playerItem, after: nil)
-                player.play()
-            } else {
-                player = AVQueuePlayer(items: [])
-                player.insert(playerItem, after: nil)
-                player.play()
-                isPlaying = true
-            }
-            if player.items().count > 5 {
-                player.removeAllItems()
-                player.insert(playerItem, after: nil)
-            }
-        }
-    }
-    */
+     func playAudio() {
+     print("oof")
+     let path = Bundle.main.path(forResource: "death", ofType: "mp3")
+     if path != nil {
+     let audioURL = URL(fileURLWithPath: path!)
+     let asset = AVAsset(url: audioURL)
+     let playerItem = AVPlayerItem(asset: asset)
+     if isPlaying {
+     player.insert(playerItem, after: nil)
+     player.play()
+     } else {
+     player = AVQueuePlayer(items: [])
+     player.insert(playerItem, after: nil)
+     player.play()
+     isPlaying = true
+     }
+     if player.items().count > 5 {
+     player.removeAllItems()
+     player.insert(playerItem, after: nil)
+     }
+     }
+     }
+     */
 }
-
