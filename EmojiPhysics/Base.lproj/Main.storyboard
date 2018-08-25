@@ -117,6 +117,7 @@
                                     <outlet property="detailLabel" destination="K5h-dM-UuU" id="iwC-yT-Lah"/>
                                     <outlet property="outlineView" destination="A8y-uU-cc2" id="o5p-ly-PA8"/>
                                     <outlet property="titleLabel" destination="4Qr-pm-IM3" id="jff-qX-yey"/>
+                                    <segue destination="BYZ-38-t0r" kind="showDetail" identifier="updateSegue" id="KVu-ZK-f7W"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -126,9 +127,6 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Emoji Themes" id="tvQ-j6-vR0"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="updateSegue" id="4Pe-Mz-Dat"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gz4-vi-OPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -174,7 +172,6 @@
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="3IP-g7-26G" firstAttribute="top" secondItem="t8R-Bd-MfM" secondAttribute="topMargin" constant="5" id="3gD-cO-IZw"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="3IP-g7-26G" secondAttribute="trailing" constant="5" id="9n3-Pt-hjr"/>
@@ -233,6 +230,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4Pe-Mz-Dat"/>
+        <segue reference="KVu-ZK-f7W"/>
     </inferredMetricsTieBreakers>
 </document>

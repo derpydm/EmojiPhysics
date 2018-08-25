@@ -22,6 +22,7 @@ class EmojiViewController: UIViewController, UICollectionViewDataSource, UIColle
     var currentEmojis: [Character]  =  [Character(" ")]
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         animator = UIDynamicAnimator(referenceView: mainView)
         collisions = UICollisionBehavior(items: [])
