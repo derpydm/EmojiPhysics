@@ -13,7 +13,7 @@ private let reuseIdentifier = "Cell"
 class ThemeCollectionViewController: UICollectionViewController {
     let currentEmojis = [EmojiTheme(title: "Classic", emojis:["😂","🐒","👩🏼‍🎓","👦🏻","😱","😅","💩"]), EmojiTheme(title: "Modern", emojis:["😂","🐒","💩"]), EmojiTheme(title: "Another", emojis:["😂","🐒","🐧"])]
     var currentSelectedCell: ThemeCollectionViewCell!
-    var currentSelectedIndexPath: IndexPath!
+    var currentSelectedIndexPath: IndexPath! = IndexPath(item: 0, section: 0)
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
@@ -59,11 +59,12 @@ class ThemeCollectionViewController: UICollectionViewController {
         let emojiText = String(currentEmojis[indexPath.item].emojis)
         cell.detailLabel.text = emojiText
         cell.outlineView.layer.shadowColor = UIColor.black.cgColor
-        cell.outlineView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cell.outlineView.layer.shadowOffset = CGSize(width: 0, height: 0)
         cell.outlineView.layer.shadowOpacity = 0.5
-        cell.outlineView.layer.shadowRadius = 8
-        cell.outlineView.layer.cornerRadius = 20
-        if indexPath.row == selectedEmoji {
+        cell.outlineView.layer.shadowRadius = 0.2
+        cell.outlineView.layer.cornerRadius = 10
+        
+        if indexPath.row == currentSelectedIndexPath.item {
             currentSelectedIndexPath = indexPath
             cell.outlineView.backgroundColor = UIColor(red: 1, green: 0.82, blue: 0.988, alpha: 1)
         }
@@ -77,11 +78,13 @@ class ThemeCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! ThemeCollectionViewCell
-        cell.outlineView.backgroundColor = UIColor(red: 1, green: 0.82, blue: 0.988, alpha: 1)
-        currentSelectedCell = collectionView.cellForItem(at: currentSelectedIndexPath) as! ThemeCollectionViewCell
-        currentSelectedCell.outlineView.backgroundColor = UIColor(red: 0.82, green: 1, blue: 0.922, alpha: 1)
-        currentSelectedIndexPath = indexPath
-        selectedEmoji = indexPath.row
+        if indexPath != currentSelectedIndexPath {
+            currentSelectedCell = collectionView.cellForItem(at: currentSelectedIndexPath) as! ThemeCollectionViewCell
+            cell.outlineView.backgroundColor = UIColor(red: 1, green: 0.82, blue: 0.988, alpha: 1)
+            currentSelectedCell.outlineView.backgroundColor = UIColor(red: 0.82, green: 1, blue: 0.922, alpha: 1)
+            currentSelectedIndexPath = indexPath
+        }
+        performSegue(withIdentifier: "updateSegue", sender: Any.self)
     }
     // MARK: UICollectionViewDelegate
 

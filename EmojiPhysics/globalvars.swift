@@ -7,7 +7,6 @@
 //
 
 import Foundation
-var selectedEmoji = 0
 struct EmojiTheme {
     var title: String
     var emojis: [Character]
